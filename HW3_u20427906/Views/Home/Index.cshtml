@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div style="text-align:center">
+    <h1>Mymedia</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <h4 style="color:blue"><u>Description</u></h4>
+            <p>
+                In this sytem a user will be allowed to upload and download three different types of
+                files, namely, Documents, images and videos. The system consists of four seperate views,
+                one for each of the the files to download and a view called home which will be used for 
+                uploading files. In the home page, you will be prompted to select a file type and when 
+                the file is uploaded, you will find it in the relevant folder and it will be available
+                for download<br />
+
+            </p>
+
+            <div style="margin-top: 30px">
+                <h4 style="color:blue"><u>The file types:</u></h4>
+                <p>
+                    The files page must display a list of all the Files that a user has uploaded with the
+                    functionality to delete and download the file.
+                    The images page must display all the images that the user uploaded, in an orderly way
+                    with the functionality to delete and download the images.
+                    The videos page must display all the videos that the user uploaded in an orderly way, 
+                    with the functionality to delete and download the videos.
+                    The about me page should display a biography along with a picture of yourself.
+                    <br />
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-6">
+            <h4><u>Option select</u></h4>
+
+
+
+
+
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div>
+                    Documents @Html.RadioButton("DocType", "Documents")<br />
+                    Images @Html.RadioButton("DocType", "Images") <br />
+                    Videos @Html.RadioButton("DocType", "Videos")<br />
+                </div>
+
+
+                <div style="margin-top:10px">
+                    <input type="file" name="files" />
+                </div>
+
+                <div style="margin-top: 10px">
+                    <input type="submit" name="submit" />
+                </div>
+
+
+            }
+
+
+
+        </div>
+    </div>
+</div>

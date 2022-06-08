@@ -1,0 +1,48 @@
+﻿@model IEnumerable<HW3_u20427906.Models.FileModel>
+
+@{
+    ViewBag.Title = "Files Uploaded";
+}
+
+<h2>Files Uploaded</h2>
+<h4 style="color:blue"><i> The files that have been uploaded:</i> </h4>
+
+
+<div style="height: 400px; overflow: auto;">
+    <div class="well-sm">
+        <table class="table table-condensed table-hover" style="background-color:peachpuff">
+            <thead style="position: sticky;top: 0">
+                <tr bgcolor="Blue" class="auto-style">
+                    <th class="col-lg-8" style="color:white"><i>File Name</i></th>
+                    <th class="col-lg-2" style="color:white"><i>Download file</i></th>
+                    <th class="col-lg-2" style="color:white"><i>Delete file</i></th>
+                </tr>
+            </thead>
+            @foreach (HW3_u20427906.Models.FileModel files in Model )
+            {
+                <tr>
+                  
+                    <td>@files.fileName</td>
+                    <td>
+                        <button class="btn btn-success">
+                            @Html.ActionLink("Download", "DownloadFile", new { fileName = files.fileName, style = "color: white" })
+                           
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">
+                            @Html.ActionLink("Delete", "DeleteFile", new { fileName = files.fileName, style = "color: white" },
+                            
+                            new
+                            {
+                                onclick = "return confirm('Do you want to delete this file?')"
+                            })
+
+                        </button>
+                    </td>
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>
